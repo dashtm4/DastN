@@ -1,0 +1,321 @@
+/**************
+Reset default browser CSS. 
+Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+**************/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  border: 0;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+:focus {
+  /* remember to define focus styles! */
+  outline: 0;
+}
+body {
+  background: #fff;
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  /* tables still need 'cellspacing="0"' in the markup */
+  border-collapse: separate;
+  border-spacing: 0;
+}
+caption,
+th,
+td {
+  font-weight: normal;
+  text-align: left;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+}
+blockquote,
+q {
+  quotes: "" "";
+}
+a img {
+  border: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/****************
+ * PAGE STRUCTURE
+ ***************/
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font: 100% "Tinos", Arial, serif;
+  font-weight: 100;
+  position: relative;
+  background: #f0f0f0;
+}
+
+#page {
+  margin: 0 auto;
+  padding: 64px;
+  overflow: hidden;
+}
+
+#paper {
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  border: 1px solid #e4e4e4;
+  background: #f9f9f9;
+}
+
+#footer {
+  padding: 0 0 24px 0;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+h1#page-title {
+  width: 50%;
+  margin: 0;
+}
+h2#source-title {
+  margin: 64px 0 12px 0;
+}
+#page-meta {
+  font-size: 0.8em;
+  font-style: italic;
+}
+#description {
+  margin: 24px 0 12px 0;
+  display: block;
+  line-height: 20px;
+}
+
+/**********
+ * MAINMENU
+ *********/
+#mainmenu {
+  width: 12%;
+  padding: 2px 4px;
+  float: right;
+  color: #f0f0f0;
+  border: 1px solid #e9e9e9;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+
+  background: #888;
+}
+#mainmenu li a {
+  color: #bbb;
+  padding: 0 3px;
+  transition: all 250ms ease-in-out;
+}
+#mainmenu li a:hover {
+  color: #888;
+}
+
+/***************
+ * FORM ELEMENTS
+ **************/
+.input-short {
+  width: 30px;
+}
+.input-large {
+  width: 200px;
+}
+
+/*********
+ * BUTTONS
+ ********/
+.btn {
+  max-width: 120px;
+  margin: 12px 0 24px 0;
+  padding: 6px 12px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  text-shadow: #fff 0 1px 1px;
+  border-radius: 6px;
+  background: rgba(128, 200, 128, 0.5);
+  border: 1px solid #f0f0f0;
+  border-bottom: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9;
+  transition: all 250ms ease-in-out;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.btn:hover {
+  background: rgba(128, 200, 128, 0.8);
+}
+.render-btn {
+  padding: 6px 32px;
+}
+
+/*********
+ * TOOLTIP
+ ********/
+#tooltip {
+  padding: 4px 6px;
+  font-size: 1.4em;
+  opacity: 0.8;
+  border: 1px solid #999;
+  background: #fff;
+  position: absolute;
+}
+
+/****************
+ * GENERAL STYLES
+ ***************/
+a,
+a:focus,
+a:active,
+a:visited {
+  color: #bbb;
+  text-decoration: none;
+}
+a:hover {
+  color: #888;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-size: 2em;
+}
+
+p.text-start {
+  font-size: 1.3em;
+}
+
+code {
+  padding: 2em !important;
+  font: 110% "Times";
+  border: 1px solid #e4e4e4;
+  overflow: auto;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.center {
+  text-align: center;
+}
+
+/* Custom */
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}

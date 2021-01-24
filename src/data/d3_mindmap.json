@@ -1,0 +1,76 @@
+{
+    "name": "D3",
+    "children": [
+     {
+      "name": "Drivers",
+      "children": [
+       {"name": "JavaScript", "size": 17010},
+       {"name": "SVG", "size": 5842},
+       {"name": "CSS", "size": 5842},
+       {"name": "Also HTML", "size": 5842}
+      ]
+     },
+     {
+      "name": "Animation",
+      "children": [
+       {
+        "name": "CSS3 Transitions",
+        "children": [
+         {"name": "Chaining", "size": 3938},
+         {"name": "Tweening", "size": 3938}
+        ]
+       }
+      ]
+     },
+     {
+      "name": "Interaction",
+      "children": [
+       {"name": "JavaScript Events", "size": 17010},
+       {"name": "FunctionSequence", "size": 5842}
+      ]
+     },
+     {
+      "name": "Maps",
+      "children": [
+        {
+         "name": "Projections", "size": 721,
+         "children": [
+           {"name": "Mercator", "size": 1983}
+         ]
+        },
+        {"name": "GeoJSON", "size": 721},
+        {"name": "TopoJSON"}
+      ]
+     },
+     {
+      "name": "Data Formats",
+      "children": [
+       {"name": "JSON", "size": 8833},
+       {"name": "CSV", "size": 1732},
+       {"name": "TSV", "size": 1732}
+      ]
+     },
+     {
+      "name": "Graphs",
+      "children": [
+       {"name": "Linear / Logarithmic Axis", "size": 1082},
+       {"name": "Timebased Axis", "size": 1082},
+       {"name": "Scale System (Numbers, Colors)", "size": 1082}
+      ]
+     },
+     {
+      "name": "Behaviors",
+      "children": [
+       {"name": "Zooming", "size": 1082},
+       {"name": "Panning", "size": 1336}
+      ]
+     },
+     {
+      "name": "Plugins",
+      "children": [
+       {"name": "Graph Plugins", "size": 1336},
+       {"name": "Projection Plugins", "size": 1082}    
+      ]
+     }
+    ]
+   }
