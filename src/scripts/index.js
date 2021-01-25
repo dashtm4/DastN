@@ -18,11 +18,16 @@ document.addEventListener("DOMContentLoaded", function () {
             duration = 750,
             root;
 
-        var tree = d3.layout.tree().size([height, width]);
+        var tree = d3.tree().size([height, width]);
 
-        var diagonal = d3.svg.diagonal().projection(function (d) {
-            return [d.y, d.x];
-        });
+        function diagonal(s,d){
+            var path = `M ${s.y} ${s.x}
+            C ${(s.y + d.y) / 2} ${s.x},
+              ${(s.y + d.y) / 2} ${d.x},
+              ${d.y} ${d.x}`;
+
+            return path;
+        }
 
         var svg = d3
             .select("#paper")
@@ -35,7 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 "translate(" + margin.left + "," + margin.top + ")"
             );
 
-        root = dataJson;
+        root = d3.hierarchy(dataJson, function (d) {
+            return d.children;
+        });
+
         root.x0 = height / 2;
         root.y0 = 0;
 
@@ -54,8 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function update(source) {
             // Compute the new tree layout.
-            var nodes = tree.nodes(root).reverse(),
-                links = tree.links(nodes);
+            var treeRoot = tree(root);
+            var nodes = treeRoot.descendants(),
+                links = nodes.slice(1);
 
             // Normalize for fixed-depth.
             nodes.forEach(function (d) {
@@ -94,12 +103,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     return d.children || d._children ? "end" : "start";
                 })
                 .text(function (d) {
-                    return d.name;
+                    return d.data.name;
                 })
                 .style("fill-opacity", 1e-6);
 
             // Transition nodes to their new position.
-            var nodeUpdate = node
+            var nodeUpdate = nodeEnter.merge(node);
+
+            nodeUpdate
                 .transition()
                 .duration(duration)
                 .attr("transform", function (d) {
@@ -131,21 +142,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Update the links…
             var link = svg.selectAll("path.link").data(links, function (d) {
-                return d.target.id;
+                return d.id;
             });
 
             // Enter any new links at the parent's previous position.
-            link
+            var linkEnter = link
                 .enter()
                 .insert("path", "g")
                 .attr("class", "link")
                 .attr("d", function (d) {
                     var o = { x: source.x0, y: source.y0 };
-                    return diagonal({ source: o, target: o });
+                    return diagonal(o, o);
                 });
 
             // Transition links to their new position.
-            link.transition().duration(duration).attr("d", diagonal);
+            var linkUpdate = linkEnter.merge(link);
+            linkUpdate.transition().duration(duration).attr("d", function (d) {
+                return diagonal(d, d.parent);
+
+            });
 
             // Transition exiting nodes to the parent's new position.
             link
@@ -154,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .duration(duration)
                 .attr("d", function (d) {
                     var o = { x: source.x, y: source.y };
-                    return diagonal({ source: o, target: o });
+                    return diagonal(o, o);
                 })
                 .remove();
 
