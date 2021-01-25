@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: Path.resolve(__dirname, '../src/scripts/index.js'),
+    app: Path.resolve(__dirname, '../src/scripts/index.ts'),
   },
   output: {
     path: Path.join(__dirname, '../build'),
@@ -28,6 +28,7 @@ module.exports = {
     alias: {
       '~': Path.resolve(__dirname, '../src'),
     },
+    extensions: ['.ts', '.js', '.tsx']
   },
   module: {
     rules: [
@@ -35,6 +36,11 @@ module.exports = {
         test: /\.mjs$/,
         include: /node_modules/,
         type: 'javascript/auto',
+      },
+      {
+        test: /\.ts?$/,
+        use: 'ts-loader',
+        exclude: /node_moudles/
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
